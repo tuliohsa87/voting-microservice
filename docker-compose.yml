@@ -1,0 +1,20 @@
+version: '3'
+volumes:
+  dados:
+networks:
+  banco:
+services:
+  db:
+    image: postgres:9.6
+    volumes:
+      # Volume dos dados
+      - dados:/var/lib/postgresql/data
+    networks:
+      - banco
+    environment:
+      - POSTGRES_DB=voting_microservice
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - TZ=GMT
+    ports:
+      - "5432:5432"
