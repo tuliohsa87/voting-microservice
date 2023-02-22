@@ -1,0 +1,17 @@
+#db-docker local
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/voting_microservice
+    username: postgres
+    password: postgres
+    schema: voting_microservice
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl: update
+      show-sql: true
+
+#Openfeign
+feing:
+  url:
+    user-info: http://localhost:8088/api/v1/user

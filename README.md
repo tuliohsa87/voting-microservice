@@ -9,17 +9,31 @@ For building and running the application you need:
 * Java JDK 17
 * Maven 2
 
+## Dependencies
+
+Além das dependências que esse microsserviço possui em seu arquivo de configuração `pom.xml`. Ele realiza consultas em uma API externa chamada [user-info](https://github.com/tuliohsa87/user-info), utilizando como meio de integração a biblioteca do [Spring Cloud OpenFeign](https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/). Então se você pretende testar localmente será necessário baixar ela do GitHub e testar as duas juntas.
+
+In addition to the dependencies this microservice has in your `pom.xml` configuration file. He conducts consultations on an external API called [user-info](https://github.com/tuliohsa87/user-info), using as a means of integrating the [Spring Cloud OpenFeign](https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/). So if you intend to test locally you will need to download it from Github and test both together.
+
+* [user-info](https://github.com/tuliohsa87/user-info)
+
 ## Setup
 
-For project local execution you need to access the `application.properties` file and modify the Prod environment variable for Dev as per below.
+For project local execution you need to access the `application.yml` file and modify the Prod environment variable for Dev as per below.
 
 Production environment
 
-        spring.profiles.active=prod
+        #environment dev/prod
+        spring:
+          profiles:
+            active: prod
 
 Development environment
 
-        spring.profiles.active=dev
+        #environment dev/prod
+        spring:
+          profiles:
+            active: dev
 
 ## Running the application locally
 
