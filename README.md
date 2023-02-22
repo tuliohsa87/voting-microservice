@@ -29,9 +29,25 @@ Another way is through the Maven command line:
 
 ``mvn spring-boot:run``
 
+## Documentation
+
+* Documentation will be available in HTML format, using the official [swagger-ui jars](https://github.com/swagger-api/swagger-ui) 
+
+* The Swagger UI page will then be available at http\://server:port/context-path/swagger-ui.html and the OpenAPI description will be available at the following url for json format: http\://server:port/context-path/v3/api-docs
+
+  * server: The server name or IP
+  * port: The server port
+  * context-path: The context path of the application
+
+* Documentation can be available in yaml format as well, on the following path : /v3/api-docs.yaml
+
+Example: `http://localhost:8087/api/swagger-ui/index.html`
+
 ## Versioning
 
 This project is using semantic version practices 2.0.0
+
+In addition to using semantic version control, the version has also been inserted into each controller's URL, so when new features are created, they do not affect users who depend on the previous version and there will be a necessary time until users suit the new functionalities.
 
 For more information about semantic version click [here](https://semver.org/lang/pt-BR/)
 
