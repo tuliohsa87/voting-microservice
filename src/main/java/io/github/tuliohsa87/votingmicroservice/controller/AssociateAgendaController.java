@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/v1/associate-agenda")
-public class AssociateAgendaController {
+public class AssociateAgendaController implements AssociateAgendaApi{
 
     @Autowired
     private AssociateAgendaService associateAgendaService;

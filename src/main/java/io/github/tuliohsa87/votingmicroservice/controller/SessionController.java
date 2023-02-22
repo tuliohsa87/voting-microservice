@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1/session")
-public class SessionController {
+public class SessionController implements SessionApi{
 
     @Autowired
     private SessionService sessionService;

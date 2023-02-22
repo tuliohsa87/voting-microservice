@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/v1/vote")
-public class SecretVoteController {
+public class SecretVoteController implements SecretVoteApi {
 
     @Autowired
     private SecretVoteService secretVoteService;
