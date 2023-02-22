@@ -4,6 +4,7 @@ import io.github.tuliohsa87.votingmicroservice.dto.AssociateAgendaDTO;
 import io.github.tuliohsa87.votingmicroservice.enuns.SessionStatusEnum;
 import io.github.tuliohsa87.votingmicroservice.enuns.VotesEnum;
 import io.github.tuliohsa87.votingmicroservice.exceptions.exception.AssociateAgenda.AssociateAgendaException;
+import io.github.tuliohsa87.votingmicroservice.exceptions.exception.AssociateAgenda.AssociateHasAlreadyVoted;
 import io.github.tuliohsa87.votingmicroservice.exceptions.exception.agenda.InvalidAgenda;
 import io.github.tuliohsa87.votingmicroservice.exceptions.exception.session.SessionException;
 import io.github.tuliohsa87.votingmicroservice.model.Agenda;
@@ -45,7 +46,10 @@ public class AssociateAgendaService {
         }
 
         Optional<AssociateAgenda> associateAgendaFound = associateAgendaRepository.findByAssociateAgendaForCpf(associateAgendaDTO.getCpf(),associateAgendaDTO.getAgendaId());
-        if (associateAgendaFound.isPresent()) throw new AssociateAgendaException("The member is already in the group.");
+        if (associateAgendaFound.isPresent()) {
+            if (associateAgendaFound.get().getAlreadyVoted().equals(VotesEnum.YES)) throw new AssociateHasAlreadyVoted("The member cannot vote twice.");
+            throw new AssociateAgendaException("The member is already in the group.");
+        }
 
         try {
             AssociateAgenda associateAgenda = new AssociateAgenda();

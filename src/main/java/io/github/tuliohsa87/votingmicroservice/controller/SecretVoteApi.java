@@ -33,6 +33,15 @@ public interface SecretVoteApi {
                             "    \"path\": \"/api/v1/vote\"\n" +
                             "}"))
             }),
+            @ApiResponse(responseCode = "403", description = "unable to vote", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(example = "{\n" +
+                            "    \"timestamp\": \"2023-02-22T04:05:43.899754200Z\",\n" +
+                            "    \"status\": 403,\n" +
+                            "    \"error\": \"Unable To Vote Exception \",\n" +
+                            "    \"message\": \"The member has no right to vote.\",\n" +
+                            "    \"path\": \"/api/v1/vote\"\n" +
+                            "}"))
+            }),
             @ApiResponse(responseCode = "400", description = "bad request", content = {
                     @Content(mediaType = "application/json", schema = @Schema(example = "{\n" +
                             "    \"timestamp\": \"2023-02-22T00:32:31.292290Z\",\n" +
@@ -70,7 +79,13 @@ public interface SecretVoteApi {
                             "}"))
             }),
             @ApiResponse(responseCode = "504", description = "Gatway Timeout", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(hidden = true))
+                    @Content(mediaType = "application/json", schema = @Schema(example = "{\n" +
+                            "    \"timestamp\": \"2023-02-22T04:26:00.526289500Z\",\n" +
+                            "    \"status\": 504,\n" +
+                            "    \"error\": \"Gateway Timeout.\",\n" +
+                            "    \"message\": \"Did not get a time response to consult CPF.\",\n" +
+                            "    \"path\": \"/api/v1/vote\"\n" +
+                            "}"))
             })
     })
     @PostMapping
