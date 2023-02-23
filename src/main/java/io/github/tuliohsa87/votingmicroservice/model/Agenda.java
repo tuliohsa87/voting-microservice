@@ -1,6 +1,7 @@
 package io.github.tuliohsa87.votingmicroservice.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.github.tuliohsa87.votingmicroservice.enuns.StatusOfTheAgendaEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -43,7 +44,7 @@ public class Agenda implements Serializable {
     @JoinColumn(name = "agenda_id")
     private Session session;
 
-    @JsonBackReference
+    @JsonManagedReference
     public Session getSession() {
         return session;
     }
