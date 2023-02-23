@@ -4,12 +4,11 @@ spring:
     url: jdbc:postgresql://host.docker.internal:5432/voting_microservice
     username: postgres
     password: postgres
-    schema: voting_microservice
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl: update
-      show-sql: true
+      ddl-auto: update
+    show-sql: true
 
 #Openfeign
 feing:

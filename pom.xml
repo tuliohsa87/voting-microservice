@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.github.tuliohsa87</groupId>
 	<artifactId>voting-microservice</artifactId>
-	<version>0.3.0</version>
+	<version>0.3.1</version>
 	<name>voting-microservice</name>
 	<description>Challenge Project for Voting Guidelines between Associates with Java and Spring Boot</description>
 	<properties>
