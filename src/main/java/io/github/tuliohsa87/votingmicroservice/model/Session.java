@@ -40,7 +40,7 @@ public class Session implements Serializable {
     @OneToMany(mappedBy = "sessionSecretVote", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<SecretVote> secretVotes;
 
-    @JsonManagedReference
+    @JsonBackReference
     public Agenda getAgenda() {
         return agenda;
     }
