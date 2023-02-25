@@ -3,6 +3,7 @@ package io.github.tuliohsa87.votingmicroservice.controller;
 import io.github.tuliohsa87.votingmicroservice.dto.SessionDTO;
 import io.github.tuliohsa87.votingmicroservice.model.Session;
 import io.github.tuliohsa87.votingmicroservice.service.SessionService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public class SessionController implements SessionApi{
     private SessionService sessionService;
 
     @PostMapping
-    public ResponseEntity<SessionDTO> createSession(@RequestBody SessionDTO sessionDTO){
+    public ResponseEntity<SessionDTO> createSession(@Valid @RequestBody SessionDTO sessionDTO){
         return sessionService.createSessionService(sessionDTO);
     }
 
