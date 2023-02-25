@@ -44,14 +44,15 @@ public class SessionService {
     AssociateAgendaRepository associateAgendaRepository;
 
     public ResponseEntity<SessionDTO> createSessionService(SessionDTO sessionDTO){
-        Optional<Agenda> agendaFound = agendaRepository.findById(sessionDTO.getAgenda_id());
+        Long id = sessionDTO.getAgenda_id();
+        if (id == null) throw new InvalidAgenda("The key to the agenda is mandatory.");
+        Optional<Agenda> agendaFound = agendaRepository.findById(id);
         if (agendaFound.isEmpty()) throw new InvalidAgenda("Please inform a valid agenda identifier!");
         Optional<Session> sessionTest = Optional.ofNullable(agendaFound.get().getSession());
         if (sessionTest.isPresent()) throw new SessionAlreadyExists("There is already a registered session!");
 
         Session sessionNew = new Session();
         sessionDTO.setStartedIn(LocalDateTime.now());
-        if (sessionDTO.getEndSession().equals(null)) sessionNew.setEndsIn(LocalDateTime.now().plusMinutes(1));
         sessionNew.setEndsIn(LocalDateTime.now().plusMinutes(sessionDTO.getEndSession()));
         BeanUtils.copyProperties(sessionDTO, sessionNew);
         sessionNew.setStatus(SessionStatusEnum.OPEN);
@@ -104,7 +105,7 @@ public class SessionService {
     }
 
     public void updateVotingTimeService(SessionDTO sessionDTO){
-        Optional<Session> sessionFound = sessionRepository.findById(sessionDTO.getId());
+        Optional<Session> sessionFound = sessionRepository.finByAgendaId(sessionDTO.getAgenda_id());
         if (sessionFound.isEmpty()) throw new InvalidSession("Please inform a valid identification key.");
         if (sessionFound.get().getStatus().equals(SessionStatusEnum.CLOSED)) throw new SessionException("The session is already closed, so it will not be possible to update the time of the agenda.");
         Session session = sessionFound.get();

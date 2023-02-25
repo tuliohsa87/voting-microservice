@@ -7,6 +7,9 @@ import io.github.tuliohsa87.votingmicroservice.exceptions.exception.agenda.Inval
 import io.github.tuliohsa87.votingmicroservice.model.Agenda;
 import io.github.tuliohsa87.votingmicroservice.repository.AgendaRepository;
 import io.github.tuliohsa87.votingmicroservice.repository.SessionRepository;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Valid;
+import jakarta.validation.Validator;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +24,9 @@ import java.util.Optional;
 public class AgendaService {
 
     @Autowired
+    private Validator validator;
+
+    @Autowired
     private AgendaRepository agendaRepository;
 
     @Autowired
@@ -29,7 +35,7 @@ public class AgendaService {
     @Autowired
     private SessionService sessionService;
 
-    public ResponseEntity<AgendaDTO> createAgendaService(AgendaDTO agendaDTO) {
+    public ResponseEntity<AgendaDTO> createAgendaService(@Valid AgendaDTO agendaDTO) {
         Agenda agendaModelNew = new Agenda();
         BeanUtils.copyProperties(agendaDTO, agendaModelNew);
         agendaModelNew.setTimestamp(LocalDateTime.now());
@@ -38,7 +44,7 @@ public class AgendaService {
             Agenda agenda = agendaRepository.save(agendaModelNew);
             BeanUtils.copyProperties(agenda, agendaDTO);
             return new  ResponseEntity<>(agendaDTO, HttpStatus.CREATED);
-        }catch (Exception e){
+        }catch (ConstraintViolationException e){
             return new ResponseEntity<>(HttpStatus.GATEWAY_TIMEOUT);
         }
     }

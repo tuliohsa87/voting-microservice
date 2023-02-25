@@ -3,6 +3,7 @@ package io.github.tuliohsa87.votingmicroservice.controller;
 import io.github.tuliohsa87.votingmicroservice.dto.AgendaDTO;
 import io.github.tuliohsa87.votingmicroservice.model.Agenda;
 import io.github.tuliohsa87.votingmicroservice.service.AgendaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class AgendaController implements AgendaApi {
     private AgendaService agendaService;
 
     @PostMapping
-    public ResponseEntity<AgendaDTO> createAgenda(@RequestBody AgendaDTO agendaDTO){
+    public ResponseEntity<AgendaDTO> createAgenda(@Valid @RequestBody AgendaDTO agendaDTO){
         return agendaService.createAgendaService(agendaDTO);
     }
 
@@ -32,7 +33,7 @@ public class AgendaController implements AgendaApi {
     }
 
     @PutMapping("/{id}")
-    public  ResponseEntity<Agenda> updateAgenda(@PathVariable(value = "id") Long id, @RequestBody AgendaDTO agendaDTO){
+    public  ResponseEntity<Agenda> updateAgenda(@PathVariable(value = "id") Long id, @Valid @RequestBody AgendaDTO agendaDTO){
         return agendaService.updateAgendaService(id, agendaDTO);
     }
 
