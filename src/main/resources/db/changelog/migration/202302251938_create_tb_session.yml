@@ -1,0 +1,73 @@
+databaseChangeLog:
+  - changeSet:
+      id: 202302251938_create_tb_session
+      author: Tulio Albuquerque
+      changes:
+        - createTable:
+            schemaName: voting_microservice
+            tableName: session
+            remarks: Table of session
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Unique identification code.
+                  autoIncrement: "${autoIncrement}"
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: topic
+                  type: varchar(255)
+                  remarks: Voting section topic
+                  constraints:
+                    nullable: false
+              - column:
+                  name: votes_not
+                  type: int8
+                  remarks: Number of votes not
+                  constraints:
+                    nullable: true
+              - column:
+                  name: votes_yes
+                  type: int8
+                  remarks: Number of YES votes
+                  constraints:
+                    nullable: true
+              - column:
+                  name: how_many_abstained
+                  type: int8
+                  remarks: Number of votes in abstinence
+                  constraints:
+                    nullable: true
+              - column:
+                  name: how_many_voted
+                  type: int8
+                  remarks: Votes
+                  constraints:
+                    nullable: true
+              - column:
+                  name: started_in
+                  type: timestamp
+                  remarks: Session creation timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ends_in
+                  type: timestamp
+                  remarks: Date and Time Stamp to finish the session
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: int2
+                  remarks: Status
+                  constraints:
+                    nullable: false
+              - column:
+                  name: agenda_id
+                  type: UUID
+                  remarks: Foreign Key of the Voting agenda
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_session_agenda
+                    references: agenda(id)

@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class AgendaService {
@@ -57,7 +58,7 @@ public class AgendaService {
         }
     }
 
-    public ResponseEntity<Agenda> findByIdService(Long id) {
+    public ResponseEntity<Agenda> findByIdService(UUID id) {
         Optional<Agenda> agendaFound = agendaRepository.findById(id);
         if (agendaFound.isEmpty()) throw new InvalidAgenda("Please inform a valid agenda identifier!");
         try {
@@ -67,7 +68,7 @@ public class AgendaService {
         }
     }
 
-    public ResponseEntity<Agenda> updateAgendaService(Long id, AgendaDTO agendaDTO){
+    public ResponseEntity<Agenda> updateAgendaService(UUID id, AgendaDTO agendaDTO){
         try {
             Agenda agenda = agendaRepository.findById(id).get();
             agenda.setTitle(agendaDTO.getTitle());
@@ -80,7 +81,7 @@ public class AgendaService {
         }
     }
 
-    public void deleteAgendaService(Long id){
+    public void deleteAgendaService(UUID id){
         try {
             Agenda agenda = agendaRepository.findById(id).get();
             agendaRepository.deleteById(agenda.getId());
@@ -89,7 +90,7 @@ public class AgendaService {
         }
     }
 
-    public ResponseEntity<Agenda> closeAgendaService(Long id){
+    public ResponseEntity<Agenda> closeAgendaService(UUID id){
         Optional<Agenda> agendaFound = agendaRepository.findById(id);
         if (agendaFound.isEmpty()) throw new InvalidAgenda("Please inform a valid agenda identifier!");
         Agenda agenda = agendaFound.get();

@@ -12,6 +12,7 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -23,7 +24,7 @@ public class Session implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
     private String topic;
     private LocalDateTime startedIn;
     private LocalDateTime endsIn;
@@ -33,7 +34,7 @@ public class Session implements Serializable {
     private Long HowManyVoted;
     private Long HowManyAbstained;
     @Column(name = "agenda_id",insertable=false, updatable=false)
-    private Long agendaId;
+    private UUID agendaId;
     @OneToOne
     private Agenda agenda;
 

@@ -7,6 +7,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -15,7 +16,7 @@ public class SecretVote implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
 
     @Column(name = "vote")
     private VotesEnum votesEnum;
@@ -24,7 +25,7 @@ public class SecretVote implements Serializable {
 
     @Column(insertable=false, updatable=false)
     @Transient
-    private Long sessionId;
+    private UUID sessionId;
 
     @ManyToOne
     @JoinColumn(name = "session_id")

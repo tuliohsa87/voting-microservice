@@ -7,12 +7,13 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 public class SessionDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Long agenda_id;
+    private UUID agenda_id;
     @NotBlank(message = "The topic of the agenda cannot be blank.")
     @Size(min = 5, max = 255, message = "Enter between 5 to 255 characters for topic.")
     private String topic;

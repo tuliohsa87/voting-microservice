@@ -5,11 +5,12 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 public class AgendaDTO {
 
-    private Long id;
+    private UUID id;
     private LocalDateTime timestamp;
     @NotBlank(message = "Mandatory title.")
     @Size(min = 5, max = 255, message = "Enter between 5 to 255 characters for title.")

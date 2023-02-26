@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/v1/session")
 public class SessionController implements SessionApi{
@@ -21,7 +23,7 @@ public class SessionController implements SessionApi{
     }
 
     @GetMapping("/close/{id}")
-    public ResponseEntity<Session> closeSession(@PathVariable Long id){
+    public ResponseEntity<Session> closeSession(@PathVariable UUID id){
         return sessionService.closeSessionService(id);
     }
 

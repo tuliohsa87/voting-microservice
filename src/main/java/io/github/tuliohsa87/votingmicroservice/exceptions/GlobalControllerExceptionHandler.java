@@ -51,7 +51,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
     }
 
     @ExceptionHandler(AgendaException.class)
-    public ResponseEntity<StandardError> emailNotSent(AgendaException e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> exceptionCustomized(AgendaException e, HttpServletRequest request) {
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
         err.setStatus(BAD_REQUEST.value());
@@ -62,7 +62,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
     }
 
     @ExceptionHandler(InvalidAgenda.class)
-    public ResponseEntity<StandardError> emailNotSent(InvalidAgenda e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> exceptionCustomized(InvalidAgenda e, HttpServletRequest request) {
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
         err.setStatus(BAD_REQUEST.value());
@@ -73,7 +73,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
     }
 
     @ExceptionHandler(SessionException.class)
-    public ResponseEntity<StandardError> emailNotSent(SessionException e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> exceptionCustomized(SessionException e, HttpServletRequest request) {
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
         err.setStatus(BAD_REQUEST.value());
@@ -84,7 +84,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
     }
 
     @ExceptionHandler(InvalidSession.class)
-    public ResponseEntity<StandardError> emailNotSent(InvalidSession e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> exceptionCustomized(InvalidSession e, HttpServletRequest request) {
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
         err.setStatus(BAD_REQUEST.value());
@@ -95,7 +95,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
     }
 
     @ExceptionHandler(SessionAlreadyExists.class)
-    public ResponseEntity<StandardError> emailNotSent(SessionAlreadyExists e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> exceptionCustomized(SessionAlreadyExists e, HttpServletRequest request) {
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
         err.setStatus(BAD_REQUEST.value());
@@ -106,7 +106,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
     }
 
     @ExceptionHandler(VoteException.class)
-    public ResponseEntity<StandardError> emailNotSent(VoteException e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> exceptionCustomized(VoteException e, HttpServletRequest request) {
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
         err.setStatus(BAD_REQUEST.value());
@@ -117,7 +117,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
     }
 
     @ExceptionHandler(ExpiredVotingTime.class)
-    public ResponseEntity<StandardError> emailNotSent(ExpiredVotingTime e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> exceptionCustomized(ExpiredVotingTime e, HttpServletRequest request) {
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
         err.setStatus(BAD_REQUEST.value());
@@ -128,7 +128,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
     }
 
     @ExceptionHandler(InvalidVotingFormat.class)
-    public ResponseEntity<StandardError> emailNotSent(InvalidVotingFormat e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> exceptionCustomized(InvalidVotingFormat e, HttpServletRequest request) {
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
         err.setStatus(BAD_REQUEST.value());
@@ -139,7 +139,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
     }
 
     @ExceptionHandler(AssociateAgendaException.class)
-    public ResponseEntity<StandardError> emailNotSent(AssociateAgendaException e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> exceptionCustomized(AssociateAgendaException e, HttpServletRequest request) {
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
         err.setStatus(BAD_REQUEST.value());
@@ -150,7 +150,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
     }
 
     @ExceptionHandler(AssociateOffTheAgenda.class)
-    public ResponseEntity<StandardError> emailNotSent(AssociateOffTheAgenda e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> exceptionCustomized(AssociateOffTheAgenda e, HttpServletRequest request) {
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
         err.setStatus(BAD_REQUEST.value());
@@ -161,7 +161,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
     }
 
     @ExceptionHandler(AssociateHasAlreadyVoted.class)
-    public ResponseEntity<StandardError> emailNotSent(AssociateHasAlreadyVoted e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> exceptionCustomized(AssociateHasAlreadyVoted e, HttpServletRequest request) {
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
         err.setStatus(BAD_REQUEST.value());
@@ -171,7 +171,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
         return ResponseEntity.status(BAD_REQUEST).body(err);
     }
     @ExceptionHandler(UnableToVoteException.class)
-    public ResponseEntity<StandardError> emailNotSent(UnableToVoteException e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> exceptionCustomized(UnableToVoteException e, HttpServletRequest request) {
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
         err.setStatus(FORBIDDEN.value());
@@ -182,7 +182,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
     }
 
     @ExceptionHandler(GatewayTimeoutException.class)
-    public ResponseEntity<StandardError> emailNotSent(GatewayTimeoutException e, HttpServletRequest request) {
+    public ResponseEntity<StandardError> exceptionCustomized(GatewayTimeoutException e, HttpServletRequest request) {
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
         err.setStatus(GATEWAY_TIMEOUT.value());

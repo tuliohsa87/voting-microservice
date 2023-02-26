@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Tag(name = "agenda", description = "The agenda API")
 public interface AgendaApi {
@@ -97,7 +98,7 @@ public interface AgendaApi {
                     "    \"path\": \"/api/v1/agenda/59\"\n" +
                     "}")))})
     @GetMapping("/{id}")
-    ResponseEntity<Agenda> findById(@PathVariable(value = "id") Long id);
+    ResponseEntity<Agenda> findById(@PathVariable(value = "id") UUID id);
 
     @Operation(summary = "Update agenda", description = "Update", tags = {"agenda"})
     @ApiResponses(value = {
@@ -116,11 +117,11 @@ public interface AgendaApi {
             })
     })
     @PutMapping("/{id}")
-    ResponseEntity<Agenda> updateAgenda(@PathVariable(value = "id") Long id, @RequestBody AgendaDTO agendaDTO);
+    ResponseEntity<Agenda> updateAgenda(@PathVariable(value = "id") UUID id, @RequestBody AgendaDTO agendaDTO);
 
     @Operation(summary = "Delete agenda", description = "Delete", tags = {"agenda"})
     @DeleteMapping("/{id}")
-    void deleteAgenda(@PathVariable(value = "id") Long id);
+    void deleteAgenda(@PathVariable(value = "id") UUID id);
 
     @Operation(summary = "Close agenda", description = "Close", tags = {"agenda"})
     @ApiResponses(value = {
@@ -154,5 +155,5 @@ public interface AgendaApi {
                     "    \"path\": \"/api/v1/agenda/close/52\"\n" +
                     "}")))})
     @GetMapping("/close/{id}")
-    ResponseEntity<Agenda> closeAgenda(@PathVariable Long id);
+    ResponseEntity<Agenda> closeAgenda(@PathVariable UUID id);
 }

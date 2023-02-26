@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: 202302252141_create_tb_associate_agenda
+      author: Tulio Albuquerque
+      changes:
+        - createTable:
+            schemaName: voting_microservice
+            tableName: associate_agenda
+            remarks: Table of associate agenda
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Unique identification code.
+                  autoIncrement: "${autoIncrement}"
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: cpf
+                  type: varchar(11)
+                  remarks: Member identification
+                  constraints:
+                    nullable: false
+              - column:
+                  name: already_voted
+                  type: int2
+                  remarks: Vote
+                  constraints:
+                    nullable: false
+              - column:
+                  name: agenda_id
+                  type: UUID
+                  remarks: Agenda identification key
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_associate_agenda
+                    references: agenda(id)
