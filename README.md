@@ -35,6 +35,8 @@ Development environment
           profiles:
             active: dev
 
+In addition, you need to ensure that your database already has a Schema created by the name `voting_microservice`, as liquibase will look for this schema for the creation of their respective tables.
+
 ## Running the application locally
 
 The simplest way to put the project to work is to perform the `` main`` method in the `io.github.tuliohsa87.votingmicroservice.VotingMicroserviceApplication` class from your IDE, whether STS or INTELLIJ.

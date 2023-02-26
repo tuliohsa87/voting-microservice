@@ -8,6 +8,11 @@ spring:
   profiles:
     active: prod
 
+  #Liquibase
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    default-schema: voting_microservice
+
 #Openfeign
 feign:
   client:

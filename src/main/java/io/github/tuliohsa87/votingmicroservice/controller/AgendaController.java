@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/v1/agenda")
@@ -28,22 +29,22 @@ public class AgendaController implements AgendaApi {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Agenda> findById(@PathVariable(value = "id") Long id){
+    public ResponseEntity<Agenda> findById(@PathVariable(value = "id") UUID id){
         return agendaService.findByIdService(id);
     }
 
     @PutMapping("/{id}")
-    public  ResponseEntity<Agenda> updateAgenda(@PathVariable(value = "id") Long id, @Valid @RequestBody AgendaDTO agendaDTO){
+    public  ResponseEntity<Agenda> updateAgenda(@PathVariable(value = "id") UUID id, @Valid @RequestBody AgendaDTO agendaDTO){
         return agendaService.updateAgendaService(id, agendaDTO);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAgenda(@PathVariable(value = "id") Long id){
+    public void deleteAgenda(@PathVariable(value = "id") UUID id){
         agendaService.deleteAgendaService(id);
     }
 
     @GetMapping("/close/{id}")
-    public ResponseEntity<Agenda> closeAgenda(@PathVariable Long id){
+    public ResponseEntity<Agenda> closeAgenda(@PathVariable UUID id){
         return agendaService.closeAgendaService(id);
     }
 }

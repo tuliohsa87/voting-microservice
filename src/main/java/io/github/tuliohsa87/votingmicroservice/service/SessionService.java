@@ -24,6 +24,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class SessionService {
@@ -44,7 +45,7 @@ public class SessionService {
     AssociateAgendaRepository associateAgendaRepository;
 
     public ResponseEntity<SessionDTO> createSessionService(SessionDTO sessionDTO){
-        Long id = sessionDTO.getAgenda_id();
+        UUID id = sessionDTO.getAgenda_id();
         if (id == null) throw new InvalidAgenda("The key to the agenda is mandatory.");
         Optional<Agenda> agendaFound = agendaRepository.findById(id);
         if (agendaFound.isEmpty()) throw new InvalidAgenda("Please inform a valid agenda identifier!");
@@ -67,7 +68,7 @@ public class SessionService {
         }
     }
 
-    public ResponseEntity<Session> closeSessionService(Long id){
+    public ResponseEntity<Session> closeSessionService(UUID id){
         Optional<Session> sessionFound = sessionRepository.findById(id);
         if (sessionFound.isEmpty()) throw new InvalidSession("Please inform a valid identification key.");
         Session session = sessionFound.get();

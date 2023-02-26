@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -20,11 +21,11 @@ public class AssociateAgenda implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
     private VotesEnum alreadyVoted;
     private String cpf;
     @Column(name = "agenda_id",insertable=false, updatable=false)
-    private Long agendaId;
+    private UUID agendaId;
     @ManyToOne
     private Agenda agenda;
 

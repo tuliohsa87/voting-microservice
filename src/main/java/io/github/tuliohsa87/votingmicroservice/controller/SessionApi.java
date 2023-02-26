@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.UUID;
+
 @Tag(name = "session", description = "The session API")
 public interface SessionApi {
 
@@ -73,7 +75,7 @@ public interface SessionApi {
             })
     })
     @GetMapping("/close/{id}")
-    ResponseEntity<Session> closeSession(@PathVariable Long id);
+    ResponseEntity<Session> closeSession(@PathVariable UUID id);
 
     @Operation(summary = "Update time", description = "For close session API", tags = {"session"})
     @ApiResponses(value = {

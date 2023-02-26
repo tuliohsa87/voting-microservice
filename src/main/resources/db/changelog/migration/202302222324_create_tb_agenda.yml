@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 202302222324_create_tb_agenda
+      author: Tulio Albuquerque
+      changes:
+        - createTable:
+            schemaName: voting_microservice
+            tableName: agenda
+            remarks: Table of agenda
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  remarks: Unique identification code.
+                  autoIncrement: "${autoIncrement}"
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: title
+                  type: varchar(255)
+                  remarks: Voting agenda title
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+                  remarks: Description of the voting agenda
+                  constraints:
+                    nullable: true
+              - column:
+                  name: annotations
+                  type: text
+                  remarks: Voting agenda notes
+                  constraints:
+                    nullable: true
+              - column:
+                  name: "timestamp"
+                  type: timestamp
+                  remarks: Stamp of date of the creation of the agenda
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status_agenda
+                  type: int4
+                  remarks: Status of the agenda
+                  constraints:
+                    nullable: false

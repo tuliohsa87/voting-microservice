@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.github.tuliohsa87</groupId>
 	<artifactId>voting-microservice</artifactId>
-	<version>0.3.3</version>
+	<version>0.4.0</version>
 	<name>voting-microservice</name>
 	<description>Challenge Project for Voting Guidelines between Associates with Java and Spring Boot</description>
 	<properties>
@@ -39,6 +39,10 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
 		</dependency>
 
 		<dependency>
